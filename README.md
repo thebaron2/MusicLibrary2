@@ -4,6 +4,8 @@ Used a docker container to run a local MS SQL server.
 Change connection string in appsettings.json to refer to your local database.
 Make sure to adjust file location inside FileHelper to the location of your json files.
 
+Unittests have not been written yet, but a project has been prepared for them in advance.
+
 ### Supported HTTP methods:
 #### Get:
 - Get all songs/artists in DB (GetSongs, `api/Songs`/`api/Artists`)
