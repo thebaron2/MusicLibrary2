@@ -1,6 +1,9 @@
 ## MusicLibrary
 
-Used a docker container to run a local MS SQL server.
+Used a docker container to run a local MS SQL server with following command:
+```
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<your_strong_password>" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
+```
 Change connection string in appsettings.json to refer to your local database.
 Make sure to adjust file location inside FileHelper to the location of your json files.
 
