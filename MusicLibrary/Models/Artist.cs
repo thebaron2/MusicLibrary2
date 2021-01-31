@@ -9,13 +9,10 @@ namespace MusicLibrary.Models
 {
     public class Artist
     {
-        [Column("DbId")]
+        [Column("Id")]
         [Key]
         [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DbId { get; set; }
-
-        [Column("Id")]        
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Column("Name")]
