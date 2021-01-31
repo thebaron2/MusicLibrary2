@@ -23,8 +23,10 @@ Unittests have not been written yet, but a project has been prepared for them in
 
 
 ### Known Issues:
-- When running the post method LoadSongsFromFile, a possible error can occur when trying to insert an ID.
-To fix this, remove the `IDENTITY (1,1)` from the Songs table create query.
-- The post method LoadArtistsFromFile throws the following error: `InvalidOperationException: No route matches the supplied value.`. This error doesnt have a workaround or fix yet.
+- When running the post method LoadSongsFromFile/LoadArtistsFromFile, a error can occur when trying to insert an ID.
+To fix this, remove the `IDENTITY (1,1)` from the table definition query.
+This used to fix this issue, but as of 31-01-2021, opening the table definition within visual studio is no longer working.
+The same error as described [here][1] occurs.
+- The post method LoadArtistsFromFile throws the following error: `InvalidOperationException: No route matches the supplied value.`. This error doesnt have a workaround or fix yet. Not sure if this still happens, since the error on inserting ID gets thrown first now.
 
-
+[1]: https://stackoverflow.com/questions/64824124/ssrs-member-not-found-exception-from-hresult-0x80020003-disp-e-membernotfound
