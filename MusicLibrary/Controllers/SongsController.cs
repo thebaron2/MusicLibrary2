@@ -131,7 +131,7 @@ namespace MusicLibrary.Controllers
         {
             List<string> songNames = GetExistingSongs();
 
-            SongRoot songs = FileHelper.ReadSongsFromJson();
+            List<Song> songs = FileHelper.ReadSongsFromJson();
             List<int> ids = await AddSongsToDb(songNames, songs);
 
             return CreatedAtAction(nameof(GetSongs), new 
@@ -163,11 +163,11 @@ namespace MusicLibrary.Controllers
             return _context.Songs.Any(e => e.Id == id);
         }
 
-        private async Task<List<int>> AddSongsToDb(List<string> songsInDb, SongRoot songs)
+        private async Task<List<int>> AddSongsToDb(List<string> songsInDb, List<Song> songs)
         {
             List<int> ids = new List<int>();
 
-            foreach (Song song in songs.Songs)
+            foreach (Song song in songs)
             {
                 if (!songsInDb.Contains(song.Name))
                 {

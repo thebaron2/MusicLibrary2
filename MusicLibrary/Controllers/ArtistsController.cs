@@ -91,7 +91,7 @@ namespace MusicLibrary.Controllers
         {
             List<string> artistNames = GetExistingArtists();
 
-            ArtistRoot artists = FileHelper.ReadArtistsFromJson();
+            List<Artist> artists = FileHelper.ReadArtistsFromJson();
             List<int> ids = await AddArtistsToDb(artistNames, artists);
 
             return CreatedAtAction(nameof(GetArtist), new
@@ -122,11 +122,11 @@ namespace MusicLibrary.Controllers
             return _context.Artists.Any(e => e.Id == id);
         }
 
-        private async Task<List<int>> AddArtistsToDb(List<string> artistsInDb, ArtistRoot artists)
+        private async Task<List<int>> AddArtistsToDb(List<string> artistsInDb, List<Artist> artists)
         {
             List<int> ids = new List<int>();
 
-            foreach (Artist artist in artists.Artists)
+            foreach (Artist artist in artists)
             {
                 if (!artistsInDb.Contains(artist.Name))
                 {
@@ -145,7 +145,7 @@ namespace MusicLibrary.Controllers
 
         /// <summary>
         /// Retrieve songs that are already in the database.
-        /// Workaround, couldnt call get all songs because of loop issue.
+        /// Workaround, couldn't call get all songs because of loop issue.
         /// </summary>
         /// <returns></returns>
         private List<string> GetExistingArtists()

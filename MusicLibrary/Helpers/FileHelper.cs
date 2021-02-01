@@ -1,26 +1,26 @@
 ﻿using MusicLibrary.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MusicLibrary.Helpers
 {
     public class FileHelper
     {
-        public static SongRoot ReadSongsFromJson()
+        public static List<Song> ReadSongsFromJson()
         {
             var jsongString = File.ReadAllText(@"c:\temp\songs.json");
-            SongRoot songs = JsonSerializer.Deserialize<SongRoot>(jsongString);
+            List<Song> songs = JsonConvert.DeserializeObject<List<Song>>(jsongString);
             return songs;
         }
 
-        public static ArtistRoot ReadArtistsFromJson()
+        public static List<Artist> ReadArtistsFromJson()
         {
             var jsongString = File.ReadAllText(@"c:\temp\artists.json");
-            ArtistRoot artists = JsonSerializer.Deserialize<ArtistRoot>(jsongString);
+            List<Artist> artists = JsonConvert.DeserializeObject<List<Artist>>(jsongString);
             return artists;
         }
 
