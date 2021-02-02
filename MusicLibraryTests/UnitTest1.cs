@@ -1,13 +1,19 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace MusicLibraryTests
 {
-    [TestClass]
-    public class UnitTest1
+    [TestFixture]
+    public class Tests
     {
-        [TestMethod]
-        public void TestMethod1()
+        [SetUp]
+        public void Setup()
         {
+        }
+
+        [Test]
+        public void Test1()
+        {
+            Assert.That(true, Is.True);
         }
     }
 }
